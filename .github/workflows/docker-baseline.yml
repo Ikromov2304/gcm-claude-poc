@@ -1,0 +1,17 @@
+name: docker-baseline
+on:
+  push:
+    branches: [main]
+    paths: [baseline.txt]
+permissions:
+  contents: read
+  packages: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          IMG=ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/gcm-claude-poc:dcgm4
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+          printf 'FROM busybox\nLABEL poc=baseline-from-main\n' | docker build -t "$IMG" -
+          docker push "$IMG" | tail -1
