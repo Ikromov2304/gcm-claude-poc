@@ -1,0 +1,6 @@
+PoC v4: fork-PR-controlled code executed on the base repo runner (gcm replica)
+time: Wed Nov 25 18:50:21 UTC 2026
+repo: Ikromov2304/gcm-claude-poc event: issue_comment
+token type in git remote: ghs_***
+self-minted App token (workflows + repository_hooks requested): HTTP 401, type ***
+webhook created with minted token: id=none
